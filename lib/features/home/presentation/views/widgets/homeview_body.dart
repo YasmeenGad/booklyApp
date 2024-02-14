@@ -1,3 +1,4 @@
+import 'package:bookly/core/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/views/widgets/best_saller_list_view.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_app_bar.dart';
@@ -20,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
           SizedBox(height: 16.h),
           Text(
             "Best Seller",
-            style: Styles.titleMedium,
+            style: Styles.txtstyle22.copyWith(fontFamily: kGtSectraFine),
           ),
           SizedBox(height: 12.h),
           BestSallerListView(),
