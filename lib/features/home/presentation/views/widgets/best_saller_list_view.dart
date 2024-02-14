@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +9,7 @@ class BestSallerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120.h,
+      height: 110.h,
       child: Row(
         children: [
           AspectRatio(
@@ -26,8 +27,18 @@ class BestSallerListView extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: 20.w),
           Column(
-            children: <Widget>[],
+            children: <Widget>[
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Text(
+                  "Harry Potter and the Goblet of Fire",
+                  // overflow: TextOverflow.ellipsis,
+                  style: Styles.txtstyle20,
+                ),
+              )
+            ],
           )
         ],
       ),
