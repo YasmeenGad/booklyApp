@@ -17,14 +17,14 @@ class BookDetailViewBody extends StatelessWidget {
           const CustomBookDetailsAppBar(),
           const CustomBookImage(),
           const SizedBox(
-            height: 43,
+            height: 40,
           ),
           Text(
             "The Jungle Book",
             style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
-            height: 6,
+            height: 5,
           ),
           Opacity(
             opacity: 0.7,
@@ -34,6 +34,10 @@ class BookDetailViewBody extends StatelessWidget {
                   fontStyle: FontStyle.italic, fontWeight: FontWeight.w500),
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
+          CustomBookRating(mainAxisAlignment: MainAxisAlignment.center),
         ],
       ),
     );

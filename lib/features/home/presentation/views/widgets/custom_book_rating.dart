@@ -4,18 +4,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomBookRating extends StatelessWidget {
-  const CustomBookRating({super.key});
+  const CustomBookRating({this.mainAxisAlignment = MainAxisAlignment.start});
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: mainAxisAlignment,
       children: <Widget>[
         Icon(
           FontAwesomeIcons.solidStar,
           color: Color(0xFFFFDD4F),
+          size: 16.sp,
         ),
         SizedBox(
-          width: 6.3.w,
+          width: 6.w,
         ),
         Text(
           "4.8",
@@ -24,9 +27,12 @@ class CustomBookRating extends StatelessWidget {
         SizedBox(
           width: 5.w,
         ),
-        Text(
-          "(2390)",
-          style: Styles.txtstyle14.copyWith(color: const Color(0xff707070)),
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            "(2390)",
+            style: Styles.txtstyle14,
+          ),
         )
       ],
     );

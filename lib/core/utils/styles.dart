@@ -21,6 +21,6 @@ abstract class Styles {
   );
   static TextStyle txtstyle16 = TextStyle(
     fontSize: 16.sp,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
   );
 }
