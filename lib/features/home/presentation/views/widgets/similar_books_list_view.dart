@@ -2,20 +2,19 @@ import 'package:bookly/features/home/presentation/views/widgets/custom_book_imag
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FeaturedBooksListView extends StatelessWidget {
-  const FeaturedBooksListView({super.key});
+class SimilarBooksListView extends StatelessWidget {
+  const SimilarBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 230.h,
+        height: MediaQuery.of(context).size.height * 0.18,
         child: Padding(
           padding: EdgeInsets.only(right: 16.w),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return SizedBox(
-                  width: 160.w, height: 210.h, child: CustomBookImage());
+              return CustomBookImage();
             },
           ),
         ));
