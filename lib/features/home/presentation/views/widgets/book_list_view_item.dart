@@ -2,8 +2,8 @@ import 'package:bookly/features/home/presentation/views/widgets/best_saller_item
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BetSallerListView extends StatelessWidget {
-  const BetSallerListView({super.key});
+class BookListViewItem extends StatelessWidget {
+  const BookListViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {
