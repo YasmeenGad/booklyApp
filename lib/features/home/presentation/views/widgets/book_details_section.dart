@@ -16,9 +16,7 @@ class BookDetailsSection extends StatelessWidget {
         SizedBox(
             width: 160.w,
             height: 190.h,
-            child: const CustomBookImage(
-              imageUrl: '',
-            )),
+            child: const CustomBookImage(imageUrl: '')),
         const SizedBox(
           height: 40,
         ),
@@ -41,7 +39,7 @@ class BookDetailsSection extends StatelessWidget {
           height: 8,
         ),
         const CustomBookRating(
-            mainAxisAlignment: MainAxisAlignment.center, count: 250, rating: 5),
+            mainAxisAlignment: MainAxisAlignment.center, count: 5, rating: 4),
       ],
     );
   }
