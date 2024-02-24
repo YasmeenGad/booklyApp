@@ -24,7 +24,7 @@ class NewestBooksItems extends StatelessWidget {
             AspectRatio(
                 aspectRatio: 2.8 / 4,
                 child: CustomBookImage(
-                  imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail,
+                  imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
                 )),
             SizedBox(width: 20.w),
             Expanded(
