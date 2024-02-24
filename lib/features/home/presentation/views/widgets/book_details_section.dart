@@ -13,7 +13,12 @@ class BookDetailsSection extends StatelessWidget {
     return Column(
       children: [
         const CustomBookDetailsAppBar(),
-        SizedBox(width: 160.w, height: 190.h, child: const CustomBookImage()),
+        SizedBox(
+            width: 160.w,
+            height: 190.h,
+            child: const CustomBookImage(
+              imageUrl: '',
+            )),
         const SizedBox(
           height: 40,
         ),
