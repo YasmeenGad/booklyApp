@@ -1,10 +1,10 @@
+import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/widgets/custom_error_widget.dart';
 import 'package:bookly/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
-import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -21,13 +21,22 @@ class SimilarBooksListView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: CustomBookImage(
-                      imageUrl:
-                          state.books[index].volumeInfo.imageLinks?.thumbnail ??
-                              '',
-                    ),
-                  );
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: AspectRatio(
+                          aspectRatio: 2.6 / 4,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fill,
+                              imageUrl: state.books[index].volumeInfo.imageLinks
+                                      ?.thumbnail ??
+                                  '',
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                            ),
+                          )));
                 }),
           );
         } else if (state is SimilarBooksFailure) {

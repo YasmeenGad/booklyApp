@@ -35,12 +35,12 @@ class CustomBookImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: AspectRatio(
-        aspectRatio: 2.6 / 4,
-        child: Padding(
-          padding: EdgeInsets.only(right: 8, left: 8),
+    return AspectRatio(
+      aspectRatio: 2.6 / 4,
+      child: Padding(
+        padding: EdgeInsets.only(right: 8, left: 8),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
           child: CachedNetworkImage(
             fit: BoxFit.fill,
             imageUrl: imageUrl,
