@@ -27,7 +27,9 @@ class BookListViewItem extends StatelessWidget {
             },
           );
         } else if (state is NewestBooksFailure) {
-          return CustomErrorWidget(errorMessage: state.errorMessage);
+          return Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: CustomErrorWidget(errorMessage: state.errorMessage));
         } else {
           return Container(
             height: MediaQuery.of(context).size.height * 0.7,

@@ -34,7 +34,9 @@ class FeaturedBooksListView extends StatelessWidget {
                 ),
               ));
         } else if (state is FeaturedBooksFailure) {
-          return CustomErrorWidget(errorMessage: state.errorMessage);
+          return Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              child: CustomErrorWidget(errorMessage: state.errorMessage));
         } else {
           return Container(
             height: MediaQuery.of(context).size.height * 0.2,
