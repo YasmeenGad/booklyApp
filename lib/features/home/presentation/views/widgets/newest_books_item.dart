@@ -15,7 +15,7 @@ class NewestBooksItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
       },
       child: SizedBox(
         height: 110.h,
@@ -45,7 +45,7 @@ class NewestBooksItems extends StatelessWidget {
                     height: 3.h,
                   ),
                   Text(
-                    "${bookModel.volumeInfo.authors![0]}",
+                    "${bookModel.volumeInfo.authors?[0]}",
                     style: Styles.txtstyle14,
                   ),
                   SizedBox(

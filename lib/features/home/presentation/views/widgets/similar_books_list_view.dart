@@ -1,5 +1,9 @@
+import 'package:bookly/core/widgets/custom_error_widget.dart';
+import 'package:bookly/core/widgets/custom_loading_indicator.dart';
+import 'package:bookly/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SimilarBooksListView extends StatelessWidget {
@@ -7,18 +11,36 @@ class SimilarBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.18,
-        child: Padding(
-          padding: EdgeInsets.only(right: 16.w),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return CustomBookImage(
-                imageUrl: '',
-              );
-            },
-          ),
-        ));
+    return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
+      builder: (context, state) {
+        if (state is SimilarBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .15,
+            child: ListView.builder(
+                itemCount: state.books.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: CustomBookImage(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                              '',
+                    ),
+                  );
+                }),
+          );
+        } else if (state is SimilarBooksFailure) {
+          return Container(
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: CustomErrorWidget(errorMessage: state.errorMessage));
+        } else {
+          return Container(
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: CustomLoadingIndicator(),
+          );
+        }
+      },
+    );
   }
 }
