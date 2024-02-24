@@ -1,15 +1,16 @@
 import 'package:bookly/core/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class BestSallerItem extends StatelessWidget {
-  const BestSallerItem({super.key});
-
+class NewestBooksItems extends StatelessWidget {
+  const NewestBooksItems({required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -21,20 +22,10 @@ class BestSallerItem extends StatelessWidget {
         child: Row(
           children: [
             AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(16),
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      AssetsData.testImage,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                aspectRatio: 2.8 / 4,
+                child: CustomBookImage(
+                  imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail,
+                )),
             SizedBox(width: 20.w),
             Expanded(
               child: Column(
@@ -43,8 +34,9 @@ class BestSallerItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      "Harry Potter and the Goblet of Fire",
-                      // overflow: TextOverflow.ellipsis,
+                      "${bookModel.volumeInfo.title}",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style:
                           Styles.txtstyle20.copyWith(fontFamily: kGtSectraFine),
                     ),
@@ -53,7 +45,7 @@ class BestSallerItem extends StatelessWidget {
                     height: 3.h,
                   ),
                   Text(
-                    "J.K. Rowling",
+                    "${bookModel.volumeInfo.authors![0]}",
                     style: Styles.txtstyle14,
                   ),
                   SizedBox(
@@ -62,12 +54,15 @@ class BestSallerItem extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        "19.99 \$",
+                        "Free",
                         style: Styles.txtstyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
-                      CustomBookRating(),
+                      CustomBookRating(
+                        rating: bookModel.volumeInfo.averageRating ?? 0,
+                        count: bookModel.volumeInfo.ratingsCount ?? 0,
+                      ),
                     ],
                   )
                 ],
